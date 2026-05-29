@@ -37,8 +37,8 @@ include 'inc/head.php';
                                 <td><?php echo $user['lastname'] ?></td>
                                 <td><?php echo $user['firstname'] ?></td>
 
-                                <td><a data-bs-toggle="modal" data-bs-target="#set_meal" class="btn btn-secondary">Set Meal</a></td>
-                                <div class="modal fade" id="set_meal" tabindex="-1">
+                                <td><a data-bs-toggle="modal" data-bs-target="#set_meal<?= $user['client_id'] ?>" class="btn btn-secondary">Set Meal</a></td>
+                                <div class="modal fade" id="set_meal<?= $user['client_id'] ?>" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -47,6 +47,7 @@ include 'inc/head.php';
                                             </div>
                                             <div class="modal-body">
                                                 <form action="process.php" method="POST">
+                                                    <input type="hidden" name="client_id" value="<?=  $user['client_id'] ?>">
                                                     <select name="meal_name" class="form-control mb-3">
                                                         <option value="">-select meal</option>
                                                         <?php
